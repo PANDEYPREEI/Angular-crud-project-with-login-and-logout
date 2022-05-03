@@ -1,0 +1,102 @@
+<nav class="navbar-light navbar bg-primary">
+    <div class="container-fluid">
+        
+        <h2 style="color:white ;">Employee Record App</h2>
+        <div class="d-flex">
+                       <button class="btn btn-success"  (click)="openModal()" style="align-items: flex-end;">Add Employee</button>
+                       <button class="btn btn-danger" routerLink="/login" style="align-items: flex-end;">Logout</button>
+  
+                       <div class="modal" tabindex="-1" role="dialog"  [ngStyle]="{'display':display ,'height' :'740px',width:'240px'} ">
+         <div class="modal-dialog  modal-dialog-scrollable"  role="document">
+               <div class="modal-content">
+                     <div class="modal-header">
+                           <h4 class="modal-title" style="color: blue;">Add Employee</h4>
+                           <button type="button" class="close" aria-label="Close" (click)="onCloseHandled()"><span aria-hidden="true">&times;</span></button>
+                         </div>
+                <div class="modal-body">
+                    <form [formGroup]="formvalue">
+                        <div class="form-group">
+                            <label >First Name</label>
+                            <input type="text" class="form-control"  formControlName="firstname">
+                            </div>
+                            <div class="form-group">
+                                <label >Last Name </label>
+                                <input type="text" class="form-control" formControlName="lastname" >
+                                </div>
+                        <div class="form-group">
+                          <label for="exampleInputEmail1">Email address</label>
+                          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="preeti@gmail.com" formControlName="email">
+                          </div>
+                        <div class="form-group">
+                          <label for="num1">Mobile Number</label>
+                          <input type="number" class="form-control" id="num1" formControlName="mobile">
+                        </div>
+                        <div class="form-group">
+                            <label for="num1">Salary</label>
+                            <input type="number" class="form-control" id="sal" placeholder="" formControlName="salary">
+                          </div>
+                     
+                       
+                          <button type="submit" *ngIf="showAdd && showupdate==false"  class="btn btn-primary  " (click)="postEmployeeDetails()">Add</button>
+                  
+                     
+                          <button type="submit"  *ngIf="showupdate && showAdd==false" class="btn btn-primary  " (click)="updateEmployeeDetails()">Update</button>
+                   
+
+                        <button type="button" class="btn btn-default " id="cancel" style="background-color: grey;" (click)="onCloseHandled()" >Close</button>
+                     
+                      </form>
+                        
+                         </div>
+                        </div>
+             </div>
+ </div>
+                     <!-- d-flex end-->  </div>
+       
+    </div>
+    </nav> 
+
+
+    <div class="container-fluid py-5" style="background-color: aliceblue; height: 200px">
+        <h1
+         class="text-center display-5 py-5"
+         style =
+           " padding: 24px 0px 5px 50px;
+            font-family:'Courier New', Courier, monospace;
+            text-decoration: dotted;
+            color: white;
+  text-shadow: 2px 2px 4px #000000;
+          "
+        >
+         Student Data
+    </h1>
+      </div>
+       <br />
+      <br />
+    <table class="table mt-4">
+        <thead>
+            <tr>
+                <th scope="col"> Id</th>
+                <th scope="col">FirstName</th>
+                <th scope="col">LastName</th>
+                <th scopr="col">Email</th>
+                <th scope="col">Mobile</th>
+                <th scope="col">Salary</th>
+            </tr>
+        </thead>
+        <tbody >
+   <tr *ngFor="let row of employeeData">
+       <td>{{row.id}}</td>
+       <td>{{row.firstname}}</td>
+       <td>{{row.lastname}}</td>
+       <td>{{row.email}}</td>
+       <td>{{row.mobile}}</td>
+       <td>{{row.salary}}</td>
+       <button type="button" class="btn btn-primary" (click)="onEdit(row)"  style="background-color: blue;">Edit</button> &nbsp;
+       <button type="button" class="btn btn-danger" (click)="ondelete(row)" style="background-color: red;">Delete</button>
+
+   </tr>
+              
+        </tbody>
+    </table>
+    

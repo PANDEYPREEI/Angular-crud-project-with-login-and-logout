@@ -1,0 +1,7 @@
+label{
+    color: black;
+}
+.modal .modal-body {    
+    overflow-y: auto;
+    max-height: 350px;
+  }
